@@ -1,6 +1,8 @@
 # greenmentor-crud-assignment
 # Project Title
   Task Management project.
+  ![Screenshot 2024-03-24 162322](https://github.com/Upendrapal0607/greenmentor-crud-assignment/assets/112810287/40955249-e06b-4cca-84ef-5d13eed68f69)
+
 ## Introduction
 This is a Task managegmet app which allow to create a new task with title and description,update and delete your task with the help of this app you can manage your task and save your time.
 ## Project Type
@@ -62,6 +64,9 @@ you have to add it for make connection with the server
 - Tailwind css
 - Redux 
 - Other libraries/modules
+<<<<<<< HEAD
 
 # Thanks,
 ## UPENDRA PAL
+=======
+>>>>>>> a00d676c5368707a20e795e9160e8afe2f44c4d6
