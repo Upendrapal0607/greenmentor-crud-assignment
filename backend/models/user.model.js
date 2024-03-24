@@ -1,12 +1,13 @@
 const mongoose= require("mongoose");
 
 const userSchema=mongoose.Schema({
-    name:String,
+    username:String,
     email: String,
     gender:String,
     password:String,
-    age:Number,
-    city : String,
+    dob:String,
+    address : String,
+    phone:String,
 },{versionKey:false})
 const UserModel= mongoose.model("ResisterUser",userSchema)
 

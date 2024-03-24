@@ -6,8 +6,8 @@ const postRoute = express.Router();
 
 postRoute.get("/", async (req, res) => {
   try {
-    const postList = await postModel.find();
-    res.status(201).json({ postList });
+    const taskList = await postModel.find();
+    res.status(201).json({ taskList });
   } catch (error) {
     res.status(404).send({ message: error });
   }
@@ -21,12 +21,12 @@ postRoute.get("/:taskId", async (req, res) => {
   }
 });
 
-postRoute.post("/addpost",auth, async (req, res) => {
+postRoute.post("/addtask",auth, async (req, res) => {
   const addedpost = req.body;
   try {
     const addedPost = new postModel(addedpost);
     await addedPost.save();
-    res.status(200).send({ message: "New post added successfully" });
+    res.status(200).send({ message: "New task added successfully" });
   } catch (error) {
     res.status(200).send(error);
   }

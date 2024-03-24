@@ -17,11 +17,12 @@ userRoute.get("/", async (req, res) => {
 
 userRoute.post("/register", async (req, res) => {
   const resUser = req.body;
+  console.log({resUser});
   try {
     const AlraidyExitst = await UserModel.findOne({ email: resUser.email });
     if (AlraidyExitst) {
       res
-        .status(409)
+        .status(202)
         .json({
           message: `user whose mail ${resUser.email} is alraiday exist`,
           name: AlraidyExitst.name,
@@ -36,7 +37,7 @@ userRoute.post("/register", async (req, res) => {
         await registerUser.save();
         res
           .status(202)
-          .send({ message: "new user resistered", name: registerUser.name });
+          .send({ message: "new user resistered", name: resUser.username });
       });
     }
   } catch (error) {
@@ -54,7 +55,7 @@ userRoute.post("/login", async (req, res) => {
           const expirationTime =
             Math.floor(Date.now() / 1000) + 60 * 60 * 24 * 7;
           const token = jwt.sign(
-            { userID: user._id, user: user.name },
+            { userID: user._id, user: user.username },
             "greenmentor",
             { expiresIn: "7d" }
           );
@@ -65,7 +66,6 @@ userRoute.post("/login", async (req, res) => {
               message: "login successful",
               token,
               user,
-              login_role: "user",
             });
         } else {
           res.status(200).send({ message: "wrong password or email" });
