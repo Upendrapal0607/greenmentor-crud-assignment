@@ -4,6 +4,7 @@ const { auth } = require("../middleware/auth.middleware");
 
 const postRoute = express.Router();
 
+// Get list of task Route 
 postRoute.get("/", async (req, res) => {
   try {
     const taskList = await postModel.find();
@@ -12,16 +13,19 @@ postRoute.get("/", async (req, res) => {
     res.status(404).send({ message: error });
   }
 });
+
+// Get single task Route 
 postRoute.get("/:taskId", async (req, res) => {
   try {
-    const postList = await postModel.find({_id: req.params.taskId});
+    const postList = await postModel.find({ _id: req.params.taskId });
     res.status(201).json({ postList });
   } catch (error) {
-    res.status(404).send({ message: "there is some error try again"});
+    res.status(404).send({ message: "there is some error try again" });
   }
 });
 
-postRoute.post("/addtask",auth, async (req, res) => {
+// Add a new task route
+postRoute.post("/addtask", auth, async (req, res) => {
   const addedpost = req.body;
   try {
     const addedPost = new postModel(addedpost);
@@ -32,7 +36,8 @@ postRoute.post("/addtask",auth, async (req, res) => {
   }
 });
 
-postRoute.patch("/update/:postId",auth,async (req, res) => {
+// Update task route
+postRoute.patch("/update/:postId", auth, async (req, res) => {
   try {
     const { postId } = req.params;
     const Post = await postModel.findOne({ _id: postId });
@@ -45,7 +50,9 @@ postRoute.patch("/update/:postId",auth,async (req, res) => {
     res.status(404).send({ message: "errror" });
   }
 });
-postRoute.delete("/delete/:postId",auth, async (req, res) => {
+
+// Delete task route
+postRoute.delete("/delete/:postId", auth, async (req, res) => {
   try {
     const { postId } = req.params;
     const Post = await postModel.findOne({ _id: postId });

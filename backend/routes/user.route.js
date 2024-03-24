@@ -3,9 +3,10 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const { UserModel } = require("../models/user.model");
 const BlackList = require("../models/blacklist.model");
-// const BlackList = require("../models/blacklist.model");
 
 const userRoute = express.Router();
+
+// Get all users route
 userRoute.get("/", async (req, res) => {
   try {
     const userList = await UserModel.find();
@@ -15,18 +16,17 @@ userRoute.get("/", async (req, res) => {
   }
 });
 
+// Register new User router
 userRoute.post("/register", async (req, res) => {
   const resUser = req.body;
-  console.log({resUser});
+  console.log({ resUser });
   try {
     const AlraidyExitst = await UserModel.findOne({ email: resUser.email });
     if (AlraidyExitst) {
-      res
-        .status(202)
-        .json({
-          message: `user whose mail ${resUser.email} is alraiday exist`,
-          name: AlraidyExitst.name,
-        });
+      res.status(202).json({
+        message: `user whose mail ${resUser.email} is alraiday exist`,
+        name: AlraidyExitst.name,
+      });
     } else {
       bcrypt.hash(resUser.password, 3, async (err, hash) => {
         if (err)
@@ -45,6 +45,7 @@ userRoute.post("/register", async (req, res) => {
   }
 });
 
+// Login user route
 userRoute.post("/login", async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -59,14 +60,12 @@ userRoute.post("/login", async (req, res) => {
             "greenmentor",
             { expiresIn: "7d" }
           );
-        
-          res
-            .status(200)
-            .send({
-              message: "login successful",
-              token,
-              user,
-            });
+
+          res.status(200).send({
+            message: "login successful",
+            token,
+            user,
+          });
         } else {
           res.status(200).send({ message: "wrong password or email" });
         }
@@ -79,18 +78,17 @@ userRoute.post("/login", async (req, res) => {
   }
 });
 
-userRoute.get("/logout",async(req,res)=>{
-    try {
-        const token=req.headers.authorization
-   const blacklist= new BlackList({token})
-   await blacklist.save()
-   res.status(200).send({message:"loguot successful"})
-
-    } catch (error) {
-        res.status(404).send({message:error})
-
-    }
-})
+// Loged out user
+userRoute.get("/logout", async (req, res) => {
+  try {
+    const token = req.headers.authorization;
+    const blacklist = new BlackList({ token });
+    await blacklist.save();
+    res.status(200).send({ message: "loguot successful" });
+  } catch (error) {
+    res.status(404).send({ message: error });
+  }
+});
 module.exports = {
   userRoute,
 };

@@ -1,25 +1,29 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { LogoutRequest } from '../Redux/userReducer/Action';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { LogoutRequest } from "../Redux/userReducer/Action";
+import { useNavigate } from "react-router-dom";
 
 export const Profile = () => {
-  const {userDetails,token,userName} = useSelector(state=>state.userReducer);
-  console.log({userDetails,userName});
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const { userDetails, token, userName } = useSelector(
+    (state) => state.userReducer
+  );
+  console.log({ userDetails, userName });
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
-dispatch(LogoutRequest(token)).then((res) => {
-alert(res.message);
-navigate("/login")
-}).catch(error=>{
-  console.log(error);
-})
-  }
+    dispatch(LogoutRequest(token))
+      .then((res) => {
+        alert(res.message);
+        navigate("/login");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div className="bg-gray-100 min-h-screen flex justify-center">
-      <div className="min-w-[98%] sm:min-w-[80%] bg-white rounded-lg overflow-hidden shadow-lg" >
+      <div className="min-w-[98%] sm:min-w-[80%] bg-white rounded-lg overflow-hidden shadow-lg">
         <div className="p-4">
           <div className="flex items-center justify-center">
             <img
@@ -29,22 +33,30 @@ navigate("/login")
             />
           </div>
           <div className="sm:text-center text-start mt-4">
-  <h1 className="text-xl font-bold">{userName||userDetails?.username}</h1>
-  <div className="sm:flex justify-between items-center mt-2">
-    <div className="mr-4">
-      <p className="text-gray-600">DOB</p>
-      <p className="text-gray-900 font-semibold">{userDetails?.dob}</p>
-    </div>
-    <div className="mr-4">
-      <p className="text-gray-600">Gender</p>
-      <p className="text-gray-900 font-semibold">{userDetails?.gender}</p>
-    </div>
-    <div>
-      <p className="text-gray-600">Email</p>
-      <p className="text-gray-900 font-semibold">{userDetails?.email}</p>
-    </div>
-  </div>
-</div>
+            <h1 className="text-xl font-bold">
+              {userName || userDetails?.username}
+            </h1>
+            <div className="sm:flex justify-between items-center mt-2">
+              <div className="mr-4">
+                <p className="text-gray-600">DOB</p>
+                <p className="text-gray-900 font-semibold">
+                  {userDetails?.dob}
+                </p>
+              </div>
+              <div className="mr-4">
+                <p className="text-gray-600">Gender</p>
+                <p className="text-gray-900 font-semibold">
+                  {userDetails?.gender}
+                </p>
+              </div>
+              <div>
+                <p className="text-gray-600">Email</p>
+                <p className="text-gray-900 font-semibold">
+                  {userDetails?.email}
+                </p>
+              </div>
+            </div>
+          </div>
 
           <div className="mt-6">
             <h2 className="text-lg font-semibold mb-2">Other Details</h2>
@@ -80,18 +92,15 @@ navigate("/login")
                 Location: {userDetails?.address}
               </li>
             </ul>
-            <button onClick={handleLogout} className="justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-            Log out
-              </ button>
-      
+            <button
+              onClick={handleLogout}
+              className="justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              Log out
+            </button>
           </div>
-      
         </div>
-  
       </div>
-  
     </div>
   );
 };
-
-

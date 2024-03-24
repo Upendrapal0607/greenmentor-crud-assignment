@@ -1,5 +1,5 @@
-import React from 'react';
-import { FaFacebookSquare,FaLinkedin } from "react-icons/fa";
+import React from "react";
+import { FaFacebookSquare, FaLinkedin } from "react-icons/fa";
 import { FaSquareTwitter } from "react-icons/fa6";
 
 const Footer = () => {
@@ -10,25 +10,28 @@ const Footer = () => {
           <div className="flex justify-center md:order-2">
             <a href="#" className="text-gray-400 hover:text-white">
               <span className="sr-only">Facebook</span>
-              <FaFacebookSquare/>
-      
+              <FaFacebookSquare />
             </a>
             <a href="#" className="ml-6 text-gray-400 hover:text-white">
               <span className="sr-only">Twitter</span>
-              <FaSquareTwitter/>
-             
+              <FaSquareTwitter />
             </a>
             <a href="#" className="ml-6 text-gray-400 hover:text-white">
               <span className="sr-only">LinkedIn</span>
-              <FaLinkedin/>
-         
+              <FaLinkedin />
             </a>
           </div>
           <div className="mt-8 md:mt-0 md:order-1">
-            <p className="text-center text-base text-gray-400"> Help : greenmentor@gmail.com</p>
+            <p className="text-center text-base text-gray-400">
+              {" "}
+              Help : greenmentor@gmail.com
+            </p>
           </div>
           <div className="mt-8 md:mt-0 md:order-1">
-            <p className="text-center text-base text-gray-400">&copy; Copyright 2024 greenmentor. All rights reserved | Design by : greenmentor.</p>
+            <p className="text-center text-base text-gray-400">
+              &copy; Copyright 2024 greenmentor. All rights reserved | Design by
+              : greenmentor.
+            </p>
           </div>
         </div>
       </div>
