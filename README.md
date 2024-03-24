@@ -62,3 +62,6 @@ you have to add it for make connection with the server
 - Tailwind css
 - Redux 
 - Other libraries/modules
+
+# Thanks,
+## UPENDRA PAL
