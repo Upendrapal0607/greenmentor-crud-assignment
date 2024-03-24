@@ -8,10 +8,10 @@ It is a Fullstack solo project
 ## Deplolyed App
 
 ### Frontent
- ```https://stalwart-bienenstitch-df572f.netlify.app/```
+Link - https://stalwart-bienenstitch-df572f.netlify.app/
 
 ### Backent
- ```https://greenmentor-assignment-backend.vercel.app/```
+Lik - https://greenmentor-assignment-backend.vercel.app/
 
 ## Video Walkthrough of the project
 
@@ -21,7 +21,7 @@ It is a Fullstack solo project
 ## Installation & Getting started
 Detailed instructions on how to install, configure, and get the project running. For your local system.
 ### Frontend
-Locally it will run:- ````http://localhost:3000/```
+Locally it will run:- http://localhost:3000/
 ```bash
 clone git clone  https://github.com/Upendrapal0607/todo-app.git
 cd /frontend/greenmentor-crud-app
@@ -30,7 +30,7 @@ npm npm start or npm run start
 ```
 
 ### Backend
-Locally it will run:- ````http://localhost:8080/```
+Locally it will run:- http://localhost:8080/
 ```bash
 clone same repo for backend
 cd backend
@@ -44,15 +44,15 @@ you have to add it for make connection with the server
 
 ## API Endpoints
 ### User 
-GET /user/ - retrieve all user
-POST /user/add/ - new registation 
-POST /user/login/ login exist user
-POST /user/logout/ logout exist user 
+- GET /user/ - retrieve all user
+- POST /user/add/ - new registation 
+- POST /user/login/ login exist user
+- POST /user/logout/ logout exist user 
 ### Task 
-GET /task/ - retrieve all tasks list 
-POST /task/addtask - create a new task
-PATCH /task/update/:taskId update single task
-DELETE /task/delete/:taskId delete single  
+- GET /task/ - retrieve all tasks list 
+- POST /task/addtask - create a new task
+- PATCH /task/update/:taskId update single task
+- DELETE /task/delete/:taskId delete single  
 
 ## Technology Stack
 - Node.js
