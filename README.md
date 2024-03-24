@@ -68,5 +68,5 @@ you have to add it for make connection with the server
 
 # Thanks,
 ## UPENDRA PAL
-=======
->>>>>>> a00d676c5368707a20e795e9160e8afe2f44c4d6
+
+
